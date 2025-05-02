@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Calculo</title>
+</head>
+<body>
+    <img src="img/backgorund.jpeg" alt="img" class="background">
+
+    <div class="main">
+        <h1 class="titulo">Calculo</h1>
+        <div class="principal">
+            <img src="img/Logo.png" alt="logo" class="logo">
+            <input type="text" class="input" placeholder="Digite o Tipo de calculo Estatistica">
+            <iframe class="sidebar-iframe" scrolling="no" src="../sidebar/Sidebar.html"></iframe>
+            <div class="primeira-coluna">
+                <h2>Calculo de Estatistica</h2>
+                <ul>
+                    <li class="prim-column" data-grafico="barra.html">grafico barras</li>
+                    <li class="prim-column" data-grafico="linha.html">grafico Linha</li>
+                    <li class="prim-column" data-grafico="pizza.html">grafico pizza</li>
+                    <li class="prim-column" data-grafico="radar.html">grafico Radar</li>
+                </ul>
+            </div>
+            <div class="segunda-coluna"></div>
+            <iframe class="barra" src="/graficos/barra.html"></iframe>
+            <div class="terceira-coluna">
+                <div class="grafico-circulo"></div>
+                <div class="grafico-barras"></div>
+                <div class="grafico-linha"></div>
+            </div>
+            <div class="coluna-lateral"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        const itensMenu = document.querySelectorAll('.prim-column');
+        const iframe = document.querySelector('.barra');
+
+        itensMenu.forEach(item => {
+            item.addEventListener('click', () => {
+                const grafico = item.getAttribute('data-grafico');
+                iframe.src = `/graficos/${grafico}`;
+            });
+        });
+    </script>
+</body>
+</html>

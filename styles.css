@@ -1,0 +1,247 @@
+
+
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    
+    
+}
+
+.logo{
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    top: 130px;
+    left: 380px;
+    z-index: 1;
+}
+
+
+.background{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    opacity: 0.89;
+    
+
+}
+
+
+.titulo{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.principal{
+    width: 1400px;
+    height:1100px;
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+    
+
+    
+
+}
+
+.sidebar-iframe{
+    width: 200px;
+    height: 600px;
+    border: solid 1px transparent;
+    display: inline-flex;
+    position: absolute;
+    left: 360px;
+    top: 290px;
+    z-index: 2;
+    
+    /* border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4); */
+}
+
+.primeira-coluna{
+    width: 800px;
+    height: 100px;
+    display: inline-flex;
+    position: absolute;
+    right: 750px;
+    top: 285px;
+    
+    
+}
+
+h2{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 40px;
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    left: 300px;
+    color: white;
+}
+
+.input{
+    width:400px;
+    height: 30px;
+    position: relative;
+    bottom: 460px;
+    right: 20px;
+    border: solid 0px black;
+    background-color: transparent; /* Fundo branco semi-transparente */
+    backdrop-filter: blur(10px);  
+    border-radius: 10px;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+    
+}
+
+input::placeholder {
+    color: white; /* Altere para a cor desejada */
+    text-align: center;
+}
+
+
+.primeira-coluna ul {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    width: 100%;
+    padding-left:0px;
+    margin: 0;
+    
+}
+
+.prim-column {
+    border: 0px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+    background-color: transparent;
+    color: white;
+} 
+
+.prim-column:hover {
+    background-color: #41ab91; /* Cor ao passar o mouse */
+    cursor: pointer;
+    transition: all 0.5s ease;;
+}
+
+
+.segunda-coluna{
+    width: 800px;
+    height: 400px;
+    display: inline-flex;
+    border: solid 1px black;
+    position: absolute;
+    right: 750px;
+    top: 380px;
+    background-color: white;
+    opacity: 0.08;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.terceira-coluna{
+    width: 800px;
+    height: 400px;
+    display: inline-flex;
+    border: solid 1px black;
+    position: absolute;
+    right: 750px;
+    top: 800px;
+    background-color: white;
+    opacity: 0.08;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+
+}
+
+.coluna-lateral{
+    
+    width: 400px;
+    height: 888px;
+    border: solid 1px black;
+    display: inline-flex;
+    position: absolute;
+    left:1290px;
+    top: 313px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    opacity: 0.08;
+}
+
+.grafico-circulo{
+    width: 400px;
+    height: 380px;
+    border: solid 1px black;
+    display: inline-flex;
+    position: absolute;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.barra{
+    width: 400px;
+    height: 380px;
+    position: absolute;
+    top: 814px;
+    left: 490px;
+    border: none;
+     overflow-y: hidden;
+    }
+
+.grafico-barras{
+    width: 350px;
+    height: 195px;
+    border: solid 1px black;
+    display: inline-flex;
+    position: absolute;
+    margin: 10px;
+    right: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+
+}
+
+.grafico-linha{
+    width: 350px;
+    height: 180px;
+    border: solid 1px black;
+    display: inline-flex;
+    position: absolute;
+    margin: 10px;
+    right: 10px;
+    top:200px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
