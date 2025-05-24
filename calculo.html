@@ -8,45 +8,141 @@
     <title>Calculo</title>
 </head>
 <body>
-    <img src="img/backgorund.jpeg" alt="img" class="background">
+    <!-- <img src="img/backgorund.jpeg" alt="img" class="background"> -->
 
     <div class="main">
         <h1 class="titulo">Calculo</h1>
         <div class="principal">
+
             <img src="img/Logo.png" alt="logo" class="logo">
-            <input type="text" class="input" placeholder="Digite o Tipo de calculo Estatistica">
+            <input type="text" class="pesquisa" placeholder="Digite o Tipo de calculo Estatistica">
             <iframe class="sidebar-iframe" scrolling="no" src="../sidebar/Sidebar.html"></iframe>
             <div class="primeira-coluna">
-                <h2>Calculo de Estatistica</h2>
+                <h2>Distribuição Normal</h2>
                 <ul>
                     <li class="prim-column" data-grafico="barra.html">grafico barras</li>
                     <li class="prim-column" data-grafico="linha.html">grafico Linha</li>
                     <li class="prim-column" data-grafico="pizza.html">grafico pizza</li>
                     <li class="prim-column" data-grafico="radar.html">grafico Radar</li>
+            
                 </ul>
             </div>
-            <div class="segunda-coluna"></div>
-            <iframe class="barra" src="/graficos/barra.html"></iframe>
+            <div class="segunda-coluna">
+               
+                <input id="media" type="number" class="calculo" placeholder="Digite a Media (μ)">
+                <input id="desvio" type="number" class="calculo" placeholder="Digite o Desvio Padrao(σ)">
+                <input id="valorX" type="number" class="calculo" placeholder="Digite o Valor(X)">
+                <!-- <input type="number" class="calculo" placeholder="Valor ou intervalo de interesse">
+                <input type="number" class="calculo" placeholder="P( x > X )">
+                <input type="number" class="calculo" placeholder="P( x < X )"> -->
+                <button class="btn-enviar"> Calcular</button>
+
+            </div>
+            <!-- <iframe class="barra" src="/graficos/barra.html"></iframe> -->
+             <!-- <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;"></iframe> -->
+
+
+
             <div class="terceira-coluna">
-                <div class="grafico-circulo"></div>
-                <div class="grafico-barras"></div>
-                <div class="grafico-linha"></div>
+                <div class="grafico-circulo">
+                  <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
+                </div>
+                <div class="grafico-barras">
+                    <h3>Z-Score e Probabilidades</h2>
+                        <img src="img/gaussian.webp"  class="resultimg">
+                    <div id="resultado" style="color:white; margin-top: 20px;"></div></div>
+                    
+                <div class="grafico-linha">
+                    <iframe class="pizza" src="graficos/pizza.html" style="width: 400px; height: 200px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;"></iframe>
+                </div>
             </div>
             <div class="coluna-lateral"></div>
         </div>
     </div>
 
     <!-- SCRIPT -->
-    <script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script> 
         const itensMenu = document.querySelectorAll('.prim-column');
-        const iframe = document.querySelector('.barra');
+const iframe = document.querySelector('.barra');
 
-        itensMenu.forEach(item => {
-            item.addEventListener('click', () => {
-                const grafico = item.getAttribute('data-grafico');
-                iframe.src = `/graficos/${grafico}`;
-            });
-        });
-    </script>
+itensMenu.forEach(item => {
+    item.addEventListener('click', () => {
+        const grafico = item.getAttribute('data-grafico');
+        iframe.src = `/graficos/${grafico}`;
+    });
+});
+
+
+
+     </script>
+    
+<script>
+
+  
+document.querySelector('.btn-enviar').addEventListener('click', async () => {
+  try {
+    const media = parseFloat(document.getElementById('media').value);
+    const desvio = parseFloat(document.getElementById('desvio').value);
+    const valorX = parseFloat(document.getElementById('valorX').value);
+
+    const response = await fetch('http://localhost:5000/calcular', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        media: media,
+        desvio_padrao: desvio,
+        valor_x: valorX
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    // Exibe o resultado corretamente
+    document.getElementById("resultado").innerHTML = `
+      <p><strong>Z:</strong> ${result["z"]}</p>
+      <p><strong>P(x < X):</strong> ${result["P(x < X)"].toFixed(4)}</p>
+      <p><strong>P(x > X):</strong> ${result["P(x > X)"].toFixed(4)}</p>
+    `;
+
+    
+     // Envia os dados para o iframe do gráfico
+  const graficoiframe = document.getElementById("grafico-frame");
+  graficoiframe.contentWindow.postMessage({
+    type: "atualizarGrafico",
+    media: media,
+    desvio: desvio,
+    valorX: valorX
+  }, "*");
+
+  // Envia os dados de P(x < X) e P(x > X) para o gráfico de pizza
+const iframePizza = document.querySelector('.pizza');
+iframePizza.contentWindow.postMessage({
+  type: "atualizarPizza",
+  pMenor: result["P(x < X)"],
+  pMaior: result["P(x > X)"]
+}, "*");
+
+
+  } catch (error) {
+    console.error("Erro:", error);
+    document.getElementById("resultado").innerText = "Erro ao calcular.";
+  }
+});
+
+
+
+ 
+
+
+
+</script>
+
+
+
 </body>
 </html>

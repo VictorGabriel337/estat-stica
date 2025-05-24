@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gráfico de Distribuição Normal</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    /* background-color: #1e1e2f; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 850px;
+  }
+
+  #grafico {
+    width: 100% !important;
+    height: 450px !important;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <canvas id="grafico"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('grafico').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Array.from({length: 100}, (_, i) => i / 10 - 5),
+        datasets: [{
+          label: 'Distribuição Normal',
+          data: Array.from({length: 100}, (_, i) => {
+            const x = i / 10 - 5;
+            const mean = 0;
+            const stdDev = 1;
+            return (1 / (stdDev * Math.sqrt(2 * Math.PI))) * Math.exp(-((x - mean) ** 2) / (2 * stdDev ** 2));
+          }),
+          borderColor: '#00bfff',
+          backgroundColor: 'rgba(0, 191, 255, 0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: { display: true, text: 'X' },
+            ticks: {
+              callback: function(value) {
+                return Number(value).toFixed(2);
+              },
+              color: '#ffffff'
+            }
+          },
+          y: {
+            title: { display: true, text: 'Probabilidade' },
+            ticks: {
+              callback: function(value) {
+                return Number(value).toFixed(4);
+              },
+              color: '#ffffff'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `Probabilidade: ${context.parsed.y.toFixed(6)}`;
+              }
+            }
+          }
+        }
+      }
+    });
+
+
+    window.addEventListener("message", (event) => {
+  if (event.data.type === "atualizarGrafico") {
+    const { media, desvio, valorX } = event.data;
+
+    // Gera novos valores com base na média e desvio padrão recebidos
+    const labels = Array.from({ length: 100 }, (_, i) => i / 10 - 5);
+    const newData = labels.map(x => {
+      const realX = x * desvio + media;
+      return (1 / (desvio * Math.sqrt(2 * Math.PI))) * Math.exp(-((realX - media) ** 2) / (2 * desvio ** 2));
+    });
+
+    chart.data.labels = labels.map(x => (x * desvio + media).toFixed(2));
+    chart.data.datasets[0].data = newData;
+    chart.update();
+  }
+});
+  </script>
+</body>
+</html>

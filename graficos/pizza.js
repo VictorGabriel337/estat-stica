@@ -1,20 +1,42 @@
 const ctx = document.getElementById('pizza');
-
-new Chart(ctx, {
+let chartPizza = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['P(x < X)', 'P(x > X)'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [0.5, 0.5], // valores iniciais (50/50)
+      backgroundColor: ['#36A2EB', '#FF6384'],
       borderWidth: 1
     }]
   },
   options: {
-    scales: {
-      y: {
-        beginAtZero: true
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          boxWidth: 20,
+          padding: 15,
+          usePointStyle: true
+        }
+      }
+    },
+    layout: {
+      padding: {
+        top: 10,
+        bottom: 10
       }
     }
+  }
+});
+
+// Ouve mensagens vindas do parent (calculo.html)
+window.addEventListener('message', (event) => {
+  if (event.data.type === 'atualizarPizza') {
+    const menor = event.data.pMenor;
+    const maior = event.data.pMaior;
+
+    chartPizza.data.datasets[0].data = [menor, maior];
+    chartPizza.update();
   }
 });
