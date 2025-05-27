@@ -88,12 +88,6 @@ body{
     
 }
 
-i{
-    position: relative;
-    left: 20px;
-    width: 1px;
-    height: 1px;
-}
 h2{
     font-family:'Times New Roman', Times, serif;
     font-size: 40px;
@@ -153,7 +147,7 @@ input::placeholder {
 } 
 
 .prim-column:hover {
-    background-color: rgb(24, 0, 0); /* Cor ao passar o mouse */
+    background-color: #41ab91; /* Cor ao passar o mouse */
     cursor: pointer;
     transition: all 0.5s ease;;
 }
@@ -229,7 +223,7 @@ input.calculo::-webkit-outer-spin-button {
 .btn-enviar{
     width: 400px;
     height: 50px;
-    background-color: black;
+    background-color: #41ab91;
     color: white;
     border: none;
     border-radius: 10px;

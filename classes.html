@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="distfreq.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vO3Jw2wWUvL57ewyH6VoGGVn3i+OZz1OL6ufM/0+E0u9+UkE0um2kF4A9A9eKFY9dW9W1Z1wNjrGjA5KJIM5xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <title>Calculo</title>
 </head>
 <body>
@@ -20,34 +18,18 @@
             <input type="text" class="pesquisa" placeholder="Digite o Tipo de calculo Estatistica">
             <iframe class="sidebar-iframe" scrolling="no" src="../sidebar/Sidebar.html"></iframe>
             <div class="primeira-coluna">
-                <h2>Distribuição Normal</h2>
+                <h2>Distribuição Frequencia</h2>
                 <ul>
-                    <li class="prim-column" data-grafico="barra.html">grafico barras <i class="fa-solid fa-lock"></i></li>
-                    <li class="prim-column" data-grafico="linha.html">grafico Linha <i class="fa-solid fa-lock"></i></li>
-                    <li class="prim-column" data-grafico="pizza.html">grafico pizza <i class="fa-solid fa-lock"></i></li>
-                    <li class="prim-column" data-grafico="radar.html">grafico Radar <i class="fa-solid fa-lock"></i></li>
+                    <li class="prim-column" data-grafico="barra.html">grafico barras</li>
+                    <li class="prim-column" data-grafico="linha.html">grafico Linha</li>
+                    <li class="prim-column" data-grafico="pizza.html">grafico pizza</li>
+                    <li class="prim-column" data-grafico="radar.html">grafico Radar</li>
             
                 </ul>
             </div>
             <div class="segunda-coluna">
                
-                <input id="media" type="number" class="calculo" placeholder="Digite a Media (μ)">
-                <input id="desvio" type="number" class="calculo" placeholder="Digite o Desvio Padrao(σ)">
-                <input id="valorX" type="number" class="calculo" placeholder="Digite o Valor(X)">
-
-
-          <select id="tipo" class="calculo">
-  <option value="">Escolha o tipo (opcional)</option>
-  <option value="igual">P(x = X)</option>
-  <option value="intervalo">P(a < x < b)</option>
-  <option value="fora-intervalo">P(x < a ou x > b)</option>
-</select>
-
-<input id="valorA" type="number" class="calculo" placeholder="Valor A (ou X)">
-<input id="valorB" type="number" class="calculo" placeholder="Valor B (se intervalo)">
-
-
-                <button class="btn-enviar"> Calcular</button>
+                
 
             </div>
             <!-- <iframe class="barra" src="/graficos/barra.html"></iframe> -->
@@ -60,7 +42,7 @@
                   <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
                 </div>
                 <div class="grafico-barras">
-                    <h3>Z-Score e Probabilidades</h2>
+                    <h3>Resultado</h3>
                         <img src="img/gaussian.webp"  class="resultimg">
                     <div id="resultado" style="color:white; margin-top: 20px;"></div></div>
                     
