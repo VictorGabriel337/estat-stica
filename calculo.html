@@ -32,9 +32,19 @@
                 <input id="media" type="number" class="calculo" placeholder="Digite a Media (μ)">
                 <input id="desvio" type="number" class="calculo" placeholder="Digite o Desvio Padrao(σ)">
                 <input id="valorX" type="number" class="calculo" placeholder="Digite o Valor(X)">
-                <!-- <input type="number" class="calculo" placeholder="Valor ou intervalo de interesse">
-                <input type="number" class="calculo" placeholder="P( x > X )">
-                <input type="number" class="calculo" placeholder="P( x < X )"> -->
+
+
+          <select id="tipo" class="calculo">
+  <option value="">Escolha o tipo (opcional)</option>
+  <option value="igual">P(x = X)</option>
+  <option value="intervalo">P(a < x < b)</option>
+  <option value="fora-intervalo">P(x < a ou x > b)</option>
+</select>
+
+<input id="valorA" type="number" class="calculo" placeholder="Valor A (ou X)">
+<input id="valorB" type="number" class="calculo" placeholder="Valor B (se intervalo)">
+
+
                 <button class="btn-enviar"> Calcular</button>
 
             </div>
@@ -77,70 +87,8 @@ itensMenu.forEach(item => {
 
      </script>
     
-<script>
+<script src="/calculo.js"></script>
 
-  
-document.querySelector('.btn-enviar').addEventListener('click', async () => {
-  try {
-    const media = parseFloat(document.getElementById('media').value);
-    const desvio = parseFloat(document.getElementById('desvio').value);
-    const valorX = parseFloat(document.getElementById('valorX').value);
-
-    const response = await fetch('http://localhost:5000/calcular', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        media: media,
-        desvio_padrao: desvio,
-        valor_x: valorX
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    // Exibe o resultado corretamente
-    document.getElementById("resultado").innerHTML = `
-      <p><strong>Z:</strong> ${result["z"]}</p>
-      <p><strong>P(x < X):</strong> ${result["P(x < X)"].toFixed(4)}</p>
-      <p><strong>P(x > X):</strong> ${result["P(x > X)"].toFixed(4)}</p>
-    `;
-
-    
-     // Envia os dados para o iframe do gráfico
-  const graficoiframe = document.getElementById("grafico-frame");
-  graficoiframe.contentWindow.postMessage({
-    type: "atualizarGrafico",
-    media: media,
-    desvio: desvio,
-    valorX: valorX
-  }, "*");
-
-  // Envia os dados de P(x < X) e P(x > X) para o gráfico de pizza
-const iframePizza = document.querySelector('.pizza');
-iframePizza.contentWindow.postMessage({
-  type: "atualizarPizza",
-  pMenor: result["P(x < X)"],
-  pMaior: result["P(x > X)"]
-}, "*");
-
-
-  } catch (error) {
-    console.error("Erro:", error);
-    document.getElementById("resultado").innerText = "Erro ao calcular.";
-  }
-});
-
-
-
- 
-
-
-
-</script>
 
 
 

@@ -50,7 +50,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/img/backgorund1.png);
+    background-image: url(/img/backgreen.jpg);
     background-size: cover; /* cobre toda a tela */
     background-position: center;
     z-index: -2;
@@ -184,11 +184,12 @@ input::placeholder {
     backdrop-filter: blur(10px); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
     0 1px 3px rgba(0, 0, 0, 0.4);
-    
-        
+   }
 
-    
-    }
+
+ 
+
+
 input.calculo::-webkit-inner-spin-button,
 input.calculo::-webkit-outer-spin-button {
     -webkit-appearance: none;
