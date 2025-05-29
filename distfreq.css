@@ -147,7 +147,7 @@ input::placeholder {
 } 
 
 .prim-column:hover {
-    background-color: #41ab91; /* Cor ao passar o mouse */
+    background-color: black; /* Cor ao passar o mouse */
     cursor: pointer;
     transition: all 0.5s ease;;
 }
@@ -173,9 +173,9 @@ input::placeholder {
 
    .calculo {
         display: block;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
         width: 400px;
-        height: 15px;
+        height: 20px;
         padding: 10px;
         border: 1px solid black;
         border-radius: 10px;
@@ -184,6 +184,18 @@ input::placeholder {
     backdrop-filter: blur(10px); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
     0 1px 3px rgba(0, 0, 0, 0.4);
+   }
+   label{
+    color: white;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    
+   }
+
+   .segunda-coluna h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: white;
    }
 
 
@@ -223,7 +235,7 @@ input.calculo::-webkit-outer-spin-button {
 .btn-enviar{
     width: 400px;
     height: 50px;
-    background-color: #41ab91;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 10px;

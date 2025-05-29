@@ -23,6 +23,8 @@ body{
 }
 
 
+
+
 .background{
     position: fixed;
     right: 0;
@@ -147,7 +149,7 @@ input::placeholder {
 } 
 
 .prim-column:hover {
-    background-color: #41ab91; /* Cor ao passar o mouse */
+    background-color: black; /* Cor ao passar o mouse */
     cursor: pointer;
     transition: all 0.5s ease;;
 }
@@ -223,7 +225,7 @@ input.calculo::-webkit-outer-spin-button {
 .btn-enviar{
     width: 400px;
     height: 50px;
-    background-color: #41ab91;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 10px;
@@ -256,14 +258,28 @@ input.calculo::-webkit-outer-spin-button {
     height: 888px;
     border: solid 1px black;
     display: inline-flex;
-    position: absolute;
-    left:1290px;
-    top: 313px;
+    position: relative;
+    left:818px;
+    bottom: 490px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9), 
     0 1px 3px rgba(0, 0, 0, 0.4);
     background-color: white;
-    opacity: 0.08;
+    background-color: rgba(255, 255, 255, 0.08);
+    justify-content: center;
+    text-align: center;
+}
+
+.resultadoclasses{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: white;
+}
+
+.segunda-coluna label, h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: white;
 }
 
 .grafico-circulo{
@@ -290,7 +306,7 @@ input.calculo::-webkit-outer-spin-button {
 
 .grafico-barras{
     width: 350px;
-    height: 195px;
+    height: 380px;
     border: solid 1px black;
     display: inline-flex;
     position: absolute;
@@ -341,7 +357,7 @@ input.calculo::-webkit-outer-spin-button {
 
 
 
-#resultado {
+#resultado{
 
   display: block;
   color: white;

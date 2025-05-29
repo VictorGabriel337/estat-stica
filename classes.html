@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="distfreq.css">
+    <link rel="stylesheet" href="classes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Calculo</title>
 </head>
@@ -18,7 +18,7 @@
             <input type="text" class="pesquisa" placeholder="Digite o Tipo de calculo Estatistica">
             <iframe class="sidebar-iframe" scrolling="no" src="../sidebar/Sidebar.html"></iframe>
             <div class="primeira-coluna">
-                <h2>Distribuição Frequencia</h2>
+                <h2>classes</h2>
                 <ul>
                     <li class="prim-column" data-grafico="barra.html">grafico barras</li>
                     <li class="prim-column" data-grafico="linha.html">grafico Linha</li>
@@ -28,6 +28,17 @@
                 </ul>
             </div>
             <div class="segunda-coluna">
+             <h3>Agrupamento de classes - Insira os dados</h3>
+            <label for="input-xi">Limites inferiores (Li)</label><br>
+            <input type="text" id="li" placeholder="Ex: 1, 2, 3, 4" class="calculo">
+
+            <label for="input-fi">Limite Superiores (LS)</label><br>
+            <input type="text" id="ls" placeholder="Ex: 1, 2, 3, 4" class="calculo">
+
+            <label for="input-fi">Frequencia (FI)</label><br>
+            <input type="text" id="fi" placeholder="Ex: 1, 2, 3, 4" class="calculo">
+
+            <button id="btn-calcular" class="btn-enviar">Calcular classe</button>
                
                 
 
@@ -39,18 +50,19 @@
 
             <div class="terceira-coluna">
                 <div class="grafico-circulo">
-                  <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
+                  <iframe id="grafico-frame" src="graficos/barra.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
                 </div>
                 <div class="grafico-barras">
                     <h3>Resultado</h3>
-                        <img src="img/gaussian.webp"  class="resultimg">
-                    <div id="resultado" style="color:white; margin-top: 20px;"></div></div>
+                    <!-- <div id="resultado" style="color:white; margin-top: 20px;"></div></div> -->
+                    <div class="resultadoclasses"></div>
                     
-                <div class="grafico-linha">
-                    <iframe class="pizza" src="graficos/pizza.html" style="width: 400px; height: 200px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;"></iframe>
-                </div>
+                    
+                
             </div>
-            <div class="coluna-lateral"></div>
+            <div class="coluna-lateral">
+                <!-- <div class="resultadoclasses"></div> -->
+            </div>
         </div>
     </div>
 
@@ -71,7 +83,7 @@ itensMenu.forEach(item => {
 
      </script>
     
-<script src="/calculo.js"></script>
+<script src="/classes.js"></script>
 
 
 
