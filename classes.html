@@ -68,20 +68,17 @@
 
     <!-- SCRIPT -->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script> 
-        const itensMenu = document.querySelectorAll('.prim-column');
-const iframe = document.querySelector('.barra');
+      <script> 
+    const itensMenu = document.querySelectorAll('.prim-column');
+    const iframe = document.getElementById('grafico-frame'); // CORRETO!
 
-itensMenu.forEach(item => {
-    item.addEventListener('click', () => {
-        const grafico = item.getAttribute('data-grafico');
-        iframe.src = `/graficos/${grafico}`;
+    itensMenu.forEach(item => {
+        item.addEventListener('click', () => {
+            const grafico = item.getAttribute('data-grafico');
+            iframe.src = `graficos/${grafico}`; // Corrigido caminho, sem barra no início
+        });
     });
-});
-
-
-
-     </script>
+</script>
     
 <script src="/classes.js"></script>
 

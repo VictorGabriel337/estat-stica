@@ -19,7 +19,11 @@ $(document).ready(function () {
             resultadoDiv.html('Os arrays Xi e Fi devem ter o mesmo tamanho.');
             return;
         }
+            // Envia os dados de fi para o iframe do gráfico
+    const iframe = document.getElementById('grafico-frame');
+    iframe.contentWindow.postMessage({ tipo: 'atualizarFi', fi: fi }, '*');
 
+    
         // Envia para o backend
         $.ajax({
             url: 'http://localhost:5000/frequencia',

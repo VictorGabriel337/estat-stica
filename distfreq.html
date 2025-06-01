@@ -46,16 +46,14 @@
 
             <div class="terceira-coluna">
                 <div class="grafico-circulo">
-                  <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
+                  <iframe id="grafico-frame" src="graficos/barra.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
                 </div>
                 <div class="grafico-barras">
                     <h3>Resultado</h3>
-                        <img src="img/gaussian.webp"  class="resultimg">
+                
                     <div id="resultado" style="color:white; margin-top: 20px;"></div></div>
                     
-                <div class="grafico-linha">
-                    <iframe class="pizza" src="graficos/pizza.html" style="width: 400px; height: 200px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;"></iframe>
-                </div>
+             
             </div>
             <div class="coluna-lateral"></div>
         </div>
@@ -64,19 +62,16 @@
     <!-- SCRIPT -->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script> 
-        const itensMenu = document.querySelectorAll('.prim-column');
-const iframe = document.querySelector('.barra');
+    const itensMenu = document.querySelectorAll('.prim-column');
+    const iframe = document.getElementById('grafico-frame'); // CORRETO!
 
-itensMenu.forEach(item => {
-    item.addEventListener('click', () => {
-        const grafico = item.getAttribute('data-grafico');
-        iframe.src = `/graficos/${grafico}`;
+    itensMenu.forEach(item => {
+        item.addEventListener('click', () => {
+            const grafico = item.getAttribute('data-grafico');
+            iframe.src = `graficos/${grafico}`; // Corrigido caminho, sem barra no início
+        });
     });
-});
-
-
-
-     </script>
+</script>
     
 <script src="distfreq.js"></script>
 

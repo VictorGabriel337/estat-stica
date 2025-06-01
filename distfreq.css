@@ -302,7 +302,7 @@ input.calculo::-webkit-outer-spin-button {
 
 .grafico-barras{
     width: 350px;
-    height: 195px;
+    height: 380px;
     border: solid 1px black;
     display: inline-flex;
     position: absolute;
