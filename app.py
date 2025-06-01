@@ -16,40 +16,49 @@ def calcular():
         desvio = float(data['desvio_padrao'])
         x = float(data['valor_x'])
 
-        # Cálculo principal
-        z = (x - media) / desvio
+        tamanho_amostra = data.get('tamanho_amostra')
+        erro_padrao = desvio  # default: cálculo populacional
+
+        if tamanho_amostra:
+            tamanho_amostra = int(tamanho_amostra)
+            erro_padrao = desvio / math.sqrt(tamanho_amostra)
+            print(f"Usando cálculo amostral com n = {tamanho_amostra}")
+
+        # Cálculo do z-score
+        z = (x - media) / erro_padrao
         p_menor = norm.cdf(z)
         p_maior = 1 - p_menor
 
         resposta = {
+            # 'tipo_calculo': 'amostral' if tamanho_amostra else 'populacional',
             'z': round(z, 4),
-            'P(x < X)': round(p_menor, 6),
-            'P(x > X)': round(p_maior, 6)
+            # 'erro_padrao': round(erro_padrao, 4),
+            'P(x < X)' if not tamanho_amostra else 'P(x̄ < X)': round(p_menor, 6),
+            'P(x > X)' if not tamanho_amostra else 'P(x̄ > X)': round(p_maior, 6)
         }
 
-        # Outras opções
         tipo = data.get('tipo')
         a = data.get('a')
         b = data.get('b')
 
         if tipo == "igual":
-            resposta["P(x = X)"] = 0.0  # Probabilidade exata é 0 em variáveis contínuas
+            resposta["P(x = X)" if not tamanho_amostra else "P(x̄ = X)"] = 0.0
 
         elif tipo == "intervalo" and a is not None and b is not None:
             a = float(a)
             b = float(b)
-            z1 = (a - media) / desvio
-            z2 = (b - media) / desvio
+            z1 = (a - media) / erro_padrao
+            z2 = (b - media) / erro_padrao
             prob = norm.cdf(z2) - norm.cdf(z1)
-            resposta[f'P({a} < x < {b})'] = round(prob, 6)
+            resposta[f'P({a} < x < {b})' if not tamanho_amostra else f'P({a} < x̄ < {b})'] = round(prob, 6)
 
         elif tipo == "fora-intervalo" and a is not None and b is not None:
             a = float(a)
             b = float(b)
-            z1 = (a - media) / desvio
-            z2 = (b - media) / desvio
+            z1 = (a - media) / erro_padrao
+            z2 = (b - media) / erro_padrao
             prob = norm.cdf(z1) + (1 - norm.cdf(z2))
-            resposta[f'P(x < {a} ou x > {b})'] = round(prob, 6)
+            resposta[f'P(x < {a} ou x > {b})' if not tamanho_amostra else f'P(x̄ < {a} ou x̄ > {b})'] = round(prob, 6)
 
         return jsonify(resposta)
 

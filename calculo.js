@@ -3,6 +3,7 @@ document.querySelector('.btn-enviar').addEventListener('click', async () => {
     const media = parseFloat(document.getElementById('media').value);
     const desvio = parseFloat(document.getElementById('desvio').value);
     const valorX = parseFloat(document.getElementById('valorX').value);
+    const tamanhoAmostra = parseInt(document.getElementById('tamanhoAmostra').value);
 
     // Novos campos
     const tipo = document.getElementById('tipo').value;
@@ -14,6 +15,10 @@ document.querySelector('.btn-enviar').addEventListener('click', async () => {
       desvio_padrao: desvio,
       valor_x: valorX,
     };
+
+    if (!isNaN(tamanhoAmostra)) {
+      payload.tamanho_amostra = tamanhoAmostra;
+    }
 
     // Adiciona se tiver valores extras
     if (tipo) {

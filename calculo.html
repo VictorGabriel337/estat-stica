@@ -31,16 +31,17 @@
             </div>
             <div class="segunda-coluna">
                
-                <input id="media" type="number" class="calculo" placeholder="Digite a Media (μ)">
+                <input id="media" type="number" class="calculo" placeholder="Digite a Media (amostra x̅)">
                 <input id="desvio" type="number" class="calculo" placeholder="Digite o Desvio Padrao(σ)">
-                <input id="valorX" type="number" class="calculo" placeholder="Digite o Valor de N (tamanho da amostra)">
+                <input id="valorX" type="number" class="calculo" placeholder="valor de X">
+                <input id="tamanhoAmostra" type="number" class="calculo" placeholder="Digite o Valor de N (tamanho da amostra)">
 
 
           <select id="tipo" class="calculo">
   <option value="">Escolha o tipo (opcional)</option>
-  <option value="igual">P(x = X)</option>
-  <option value="intervalo">P(a < x < b)</option>
-  <option value="fora-intervalo">P(x < a ou x > b)</option>
+  <option value="igual">igual P(x = X)</option>
+  <option value="intervalo">intervalo P(a < x < b)</option>
+  <option value="fora-intervalo">fora-do-intervalo P(x < a ou x > b)</option>
 </select>
 
 <input id="valorA" type="number" class="calculo" placeholder="Valor A (ou X)">
@@ -60,7 +61,7 @@
                   <iframe id="grafico-frame" src="graficos/distribuição-normal.html" style="width: 450px; height: 400px; max-width: 900px; margin: 0 auto; display: block; border: none; border-radius: 8px;position:relative;bottom: 10px; overflow-y: hidden;"></iframe>
                 </div>
                 <div class="grafico-barras">
-                    <h3>Z-Score e Probabilidades</h2>
+                    <h3>Resultado da analise normal</h2>
                         <img src="img/gaussian.webp"  class="resultimg">
                     <div id="resultado" style="color:white; margin-top: 20px;"></div></div>
                     
