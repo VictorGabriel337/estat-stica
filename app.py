@@ -112,7 +112,7 @@ def frequencia():
 
 
 # ======================= AGRUPAMENTO EM CLASSES =======================
-
+@app.route('/classes', methods=['POST'])
 def calcular_classes(amostra, numero_classes=None):
     n = len(amostra)
     minimo = min(amostra)
